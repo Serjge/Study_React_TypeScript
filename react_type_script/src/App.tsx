@@ -1,36 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Accordion from "./components/Accordion/Accordion";
 import Rating from "./components/Rating/Rating";
-import {On, OnOff} from "./components/OnOff/OnOff";
-import UncontrolledAccordion from "./components/UnconrolledAccordion/UncontrolledAccordion";
-import UncontrolledRating from "./components/UncontolledRating/UncontrolledRating";
+import {OnOff} from "./components/OnOff/OnOff";
+
+export type StarRatingType = 0 | 1 | 2 | 3 | 4 | 5
 
 function App() {
+
+    let [collapsed, setCollapsed] = useState(true)
+    let [starRating, setStarRating] = useState<StarRatingType>(0)
+    let [on, setOn] = useState(true)
+
+    const onClickAccordion = () => setCollapsed(!collapsed)
+    const onClickButton = (on: boolean) => setOn(on)
     return (
         <div>
             <PageTitle title={'News'}/>
-            This is APP component
-            <Rating value={5}/>
-            <Accordion titleValue={'Menu'} collapsed={true}/>
+            <Rating onClick={setStarRating} value={starRating}/>
+            <Accordion titleValue={'Menu'} onClick={onClickAccordion} collapsed={collapsed}/>
             <PageTitle title={'Settings'}/>
-<UncontrolledRating value={5}/>
-            <UncontrolledAccordion titleValue={'hello'} />
             <hr/>
-            <OnOff switch={false}/>
-            <OnOff switch={true}/>
-            <hr/>
-            <On/>
-            <hr/>
+            <br/>
+            <OnOff onClick={onClickButton} switch={on}/>
+            <br/>
             <Page/>
-
-            {/*<Rating value={0}/>*/}
-            {/*<Rating value={1}/>*/}
-            {/*<Rating value={2}/>*/}
-            {/*<Rating value={3}/>*/}
-            {/*<Rating value={4}/>*/}
-            {/*<Rating value={5}/>*/}
-
         </div>
     );
 }

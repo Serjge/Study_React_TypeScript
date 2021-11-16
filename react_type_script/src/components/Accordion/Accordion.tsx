@@ -3,6 +3,7 @@ import c from './According.module.css'
 
 type AccordionPropsType = {
     titleValue: string
+    onClick: () => void
     collapsed: boolean
 }
 
@@ -10,21 +11,21 @@ function Accordion(props: AccordionPropsType) {
 
         return (
             <div className={c.item}>
-                <AccordionTitle  title={props.titleValue}/>
-                { !props.collapsed && <AccordionBody/> }
+                <AccordionTitle onClick={props.onClick} title={props.titleValue}/>
+                { props.collapsed && <AccordionBody/> }
             </div>
         )
-
 }
 
 type AccordionTitlePropsType = {
     title: string
+    onClick: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3 onClick={props.onClick}>{props.title}</h3>
         </div>
     )
 }

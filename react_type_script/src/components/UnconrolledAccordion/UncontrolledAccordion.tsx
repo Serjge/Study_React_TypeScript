@@ -3,7 +3,6 @@ import c from './UncontrolledAccording.module.css'
 
 type AccordionPropsType = {
     titleValue: string
-
 }
 
 function UncontrolledAccordion(props: AccordionPropsType) {
@@ -12,21 +11,21 @@ function UncontrolledAccordion(props: AccordionPropsType) {
 
         return (
             <div className={c.item}>
-                <AccordionTitle  title={props.titleValue}/><button onClick={() => {setCollapsed(collapsed === true ? false : true)}}>Toggle</button>
+                <AccordionTitle onClick={() => setCollapsed(!collapsed)}  title={props.titleValue}/>
                 { collapsed && <AccordionBody/> }
             </div>
         )
-
 }
 
 type AccordionTitlePropsType = {
     title: string
+    onClick: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3 onClick={props.onClick}>{props.title}</h3>
         </div>
     )
 }

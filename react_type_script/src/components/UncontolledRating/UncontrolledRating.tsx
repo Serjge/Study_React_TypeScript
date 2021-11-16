@@ -1,27 +1,20 @@
 import React, {useState} from "react";
 import Star from "./Star/Star";
-import UncontrolledAccordion from "../UnconrolledAccordion/UncontrolledAccordion";
 
 
-type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
-}
-
-function UncontrolledRating(props: RatingPropsType) {
+function UncontrolledRating() {
 
     let [star, setStar] = useState(0)
 
-        return (
-            <div>
-                <button onClick={() => {setStar(0)}}>0</button>
-                <Star selected={star > 0  }/><button onClick={() => {setStar(1)}} >1</button>
-                <Star selected={star > 1}/><button onClick={() => {setStar(2)}}>2</button>
-                <Star selected={star > 2}/><button onClick={() => {setStar(3)}}>3</button>
-                <Star selected={star > 3}/><button onClick={() => {setStar(4)}}>4</button>
-                <Star selected={star > 4}/><button onClick={() => {setStar(5)}}>5</button>
-            </div>
-        )
-
+    return (
+        <div>
+            <Star selected={star > 0} setStar={setStar} value={1}/>
+            <Star selected={star > 1} setStar={setStar} value={2}/>
+            <Star selected={star > 2} setStar={setStar} value={3}/>
+            <Star selected={star > 3} setStar={setStar} value={4}/>
+            <Star selected={star > 4} setStar={setStar} value={5}/>
+        </div>
+    )
 }
 
 export default UncontrolledRating

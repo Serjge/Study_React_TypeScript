@@ -1,16 +1,20 @@
 import React from "react";
+import {StarIcon} from "./StarIcon";
+import s from "./star.module.css"
+import {StarRatingType} from "../../../App";
 
 type StarPropsType = {
     selected: boolean
+    value: StarRatingType
+    onClick: (value: StarRatingType)=> void
 }
 
 function Star(props: StarPropsType) {
 
-    if (props.selected === true) {
-        return <span><b>Star </b></span>
-    } else {
-        return <span>Star</span>
-    }
+
+    return <span onClick={() =>props.onClick(props.value)}> {props.selected ? <StarIcon selected={props.selected}/> : <StarIcon selected={props.selected}/>} </span>
+
+
 }
 
 export default Star

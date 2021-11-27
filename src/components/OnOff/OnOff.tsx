@@ -4,18 +4,20 @@ import s from './OnOff.module.css'
 type OnOffType = {
     switch: boolean
     onClick: (on: boolean) => void
+    switchOnColor?: string
+    switchOffColor?: string
 }
 
 export function OnOff(props: OnOffType) {
 
     const onStyle = {
-        background: props.switch ? 'green' : ''
+        background: props.switchOnColor ? props.switch ? props.switchOnColor : '' : props.switch ? 'green' : ''
     }
     const offStyle = {
-        background: props.switch ? '' : 'red'
+        background: props.switchOffColor ? props.switch ? '' : props.switchOffColor : props.switch ? '' : 'red'
     }
     const indicationStyle = {
-        background: props.switch ? 'green' : 'red'
+        background: props.switchOnColor && props.switchOffColor ? props.switch ? props.switchOnColor : props.switchOffColor : props.switch ? 'green' : 'red'
     }
 
     const onClickTrue = () => props.onClick(true)

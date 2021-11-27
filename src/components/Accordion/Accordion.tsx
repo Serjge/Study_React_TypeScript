@@ -1,43 +1,55 @@
 import React from "react";
 import c from './According.module.css'
+import {MenuType} from "../../App";
 
-type AccordionPropsType = {
-    titleValue: string
-    onClick: () => void
-    collapsed: boolean
-}
 
-function Accordion(props: AccordionPropsType) {
-
-        return (
-            <div className={c.item}>
-                <AccordionTitle onClick={props.onClick} title={props.titleValue}/>
-                { props.collapsed && <AccordionBody/> }
-            </div>
-        )
-}
-
-type AccordionTitlePropsType = {
+export type AccordionPropsType = {
     title: string
-    onClick: () => void
+    onClick: (on: boolean) => void
+    collapsed: boolean
+    menu: MenuType[]
 }
 
-function AccordionTitle(props: AccordionTitlePropsType) {
+export function Accordion(props: AccordionPropsType) {
+
     return (
-        <div>
-            <h3 onClick={props.onClick}>{props.title}</h3>
+        <div className={c.item}>
+            <AccordionTitle collapsed={props.collapsed} onClick={props.onClick} title={props.title}/>
+            {props.collapsed && <AccordionBody menu={props.menu}/>}
         </div>
     )
 }
 
-function AccordionBody() {
+type AccordionTitlePropsType = {
+    title: string
+    onClick: (on: boolean) => void
+    collapsed: boolean
+
+}
+
+function AccordionTitle(props: AccordionTitlePropsType) {
+
+    const onClick = () => props.onClick(!props.collapsed)
+
     return (
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
+        <div>
+            <h3 onClick={onClick}>{props.title}</h3>
+
+        </div>
     )
 }
 
-export default Accordion
+type AccordionBodyPropsType = {
+    menu: MenuType[]
+}
+
+function AccordionBody(props:AccordionBodyPropsType) {
+    return (
+        <ul>
+            {props.menu.map(m=> {
+                return <li>{m.id} {m.name}</li>
+            })}
+
+        </ul>
+    )
+}

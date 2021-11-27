@@ -7,7 +7,7 @@ type RatingPropsType = {
     onClick: (value: StarRatingType) => void
 }
 
-function Rating(props: RatingPropsType) {
+export function Rating(props: RatingPropsType) {
 
     return (
         <div>
@@ -20,4 +20,3 @@ function Rating(props: RatingPropsType) {
     )
 }
 
-export default Rating

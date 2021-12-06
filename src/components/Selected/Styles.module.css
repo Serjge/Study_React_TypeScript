@@ -1,0 +1,31 @@
+.wrapper {
+    border: #1ea7fd 1px solid;
+    display: inline-block;
+    min-width: 70px;
+}
+
+.title {
+    cursor: pointer;
+}
+
+.menu {
+    border: #1ea7fd 1px solid;
+    background: #333333;
+
+    float: none;
+    min-width: 70px;
+    position: absolute;
+    left: calc(50% - 36px);
+    cursor: pointer;
+    display: inline-block;
+
+}
+.item {
+    padding: 5px 10px 5px 10px;
+}
+.item:hover {
+    background: #1ea7fd;
+}
+.hidden {
+    display: none;
+}

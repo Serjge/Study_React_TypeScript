@@ -3,3 +3,7 @@ Body {
   background: #1e1e1e;
   color: #cccccc;
 }
+.wrapper {
+  display: inline-flex;
+
+}

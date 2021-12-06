@@ -8,14 +8,19 @@ export type AccordionPropsType = {
     onClick: (on: boolean) => void
     collapsed: boolean
     menu: MenuType[]
+    onClickItem: (value: any) => void
 }
 
 export function Accordion(props: AccordionPropsType) {
 
     return (
         <div className={c.item}>
-            <AccordionTitle collapsed={props.collapsed} onClick={props.onClick} title={props.title}/>
-            {props.collapsed && <AccordionBody menu={props.menu}/>}
+            <AccordionTitle collapsed={props.collapsed}
+                            onClick={props.onClick}
+                            title={props.title}
+                            onClickItem={props.onClickItem}/>
+            {props.collapsed && <AccordionBody menu={props.menu}
+                                               onClickItem={props.onClickItem}/>}
         </div>
     )
 }
@@ -24,7 +29,7 @@ type AccordionTitlePropsType = {
     title: string
     onClick: (on: boolean) => void
     collapsed: boolean
-
+    onClickItem: (value: any) => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
@@ -41,13 +46,17 @@ function AccordionTitle(props: AccordionTitlePropsType) {
 
 type AccordionBodyPropsType = {
     menu: MenuType[]
+    onClickItem: (value: any) => void
 }
 
-function AccordionBody(props:AccordionBodyPropsType) {
+function AccordionBody(props: AccordionBodyPropsType) {
     return (
         <ul>
-            {props.menu.map(m=> {
-                return <li>{m.id} {m.name}</li>
+            {props.menu.map((m, item) => {
+                return <li key={item}
+                           onClick={(e) => props.onClickItem(m.name)}>
+                    {m.id} {m.name}
+                </li>
             })}
 
         </ul>

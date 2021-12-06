@@ -1,3 +1,9 @@
 .star {
     cursor: pointer;
 }
+.star__color {
+    fill: white;
+}
+.star__color-active {
+    fill: gold
+}

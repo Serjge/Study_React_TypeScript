@@ -4,6 +4,7 @@ import {Accordion} from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
 import {OnOff} from "./components/OnOff/OnOff";
 import {Selected} from "./components/Selected/Selected";
+import Clock from "./components/clock/Clock";
 
 
 export type StarRatingType = 0 | 1 | 2 | 3 | 4 | 5
@@ -58,6 +59,7 @@ export function App() {
                       onChange={onChangeSelected}
                       onClick={onClickSelected}
                       items={ItemSelected}/>
+            <Clock/>
             <Page/>
         </div>
     );

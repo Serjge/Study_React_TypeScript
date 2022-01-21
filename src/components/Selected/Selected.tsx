@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 import styles from "./Styles.module.css"
 
-
 type ItemsType = {
     title: string
     value: any
-
 }
 
 type SelectedType = {

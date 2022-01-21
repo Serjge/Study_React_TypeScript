@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-type ClockPropsType = {}
-
-
-const Clock = ({}: ClockPropsType) => {
+export const DigitalClock = () => {
 
     const [date, setDate] = useState(new Date())
 
@@ -31,5 +28,3 @@ const Clock = ({}: ClockPropsType) => {
         </div>
     );
 };
-
-export default Clock;
